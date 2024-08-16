@@ -1,5 +1,8 @@
 package com.ahmete;
 
+import com.ahmete._00_ExceptionGiris.YeniClass;
+
+import java.time.LocalDate;
 import java.util.Scanner;
 
 class WrongChoiceException extends Exception {
@@ -51,5 +54,7 @@ public class MatematikIslemleri {
 		}
 		
 		scanner.close();
+		
+		YeniClass yc = new YeniClass("em", "er", LocalDate.of(2000,1,1));
 	}
 }
