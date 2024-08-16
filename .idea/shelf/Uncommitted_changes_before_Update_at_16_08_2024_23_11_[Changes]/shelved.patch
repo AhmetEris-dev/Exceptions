@@ -1,0 +1,971 @@
+Index: src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/UserRunner.java
+===================================================================
+diff --git a/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/UserRunner.java b/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/UserRunner.java
+deleted file mode 100644
+--- a/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/UserRunner.java	(revision 4f7da76f7558e55a8a63fe4f394198d32b2a4d06)
++++ /dev/null	(revision 4f7da76f7558e55a8a63fe4f394198d32b2a4d06)
+@@ -1,9 +0,0 @@
+-package com.ahmete._00_ExceptionGiris._03_UserSearch;
+-
+-public class UserRunner {
+-	public static void main(String[] args) {
+-		UserRepository repository=new UserRepository();
+-		User su = repository.getUserByName("salih");
+-		System.out.println(su);
+-	}
+-}
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_00_ExceptionGiris/_02_ExceotionTurleri.java
+===================================================================
+diff --git a/src/main/java/com/ahmete/_00_ExceptionGiris/_02_ExceotionTurleri.java b/src/main/java/com/ahmete/_00_ExceptionGiris/_02_ExceotionTurleri.java
+deleted file mode 100644
+--- a/src/main/java/com/ahmete/_00_ExceptionGiris/_02_ExceotionTurleri.java	(revision 4f7da76f7558e55a8a63fe4f394198d32b2a4d06)
++++ /dev/null	(revision 4f7da76f7558e55a8a63fe4f394198d32b2a4d06)
+@@ -1,35 +0,0 @@
+-package com.ahmete._00_ExceptionGiris;
+-
+-import java.io.FileInputStream;
+-import java.io.FileNotFoundException;
+-
+-/**
+- * Exception;
+- * -sizin tanımladığınız exceptionlar (user-Defined Exception)
+- * -Hazır gelen exceptionlar (Built-in Exceptions)
+- *     -Checked
+- *        Derleme zamanında mutlaka kontrol sağlanmasını zorunlu kılar
+- *        Bu kontrol için 2 yol vardır
+- *          1.Yol:Try-Catch bloguna alarak
+- *          2.Yol: içinde bulundugumuz metodun imzasına throws ile exception adını yazarak
+- *     -UnChecked (AritmeticException,NullPointerException,ArrayIndexOutOfBoundsException):RuntimeException'dan türetilen sınıflar.
+- */
+-public class _02_ExceotionTurleri {
+-	public static void main(String[] args) {
+-		
+-		try {
+-			dosyaOku();
+-		}
+-		catch (FileNotFoundException e) {
+-			e.printStackTrace();
+-		}
+-		System.out.println("program devam ediyor!");
+-		
+-		
+-	}
+-	private static void dosyaOku() throws FileNotFoundException {
+-		FileInputStream fis = null;
+-		fis = new FileInputStream("C:/javaFiles/Hello3.txt");
+-		
+-	}
+-}
+\ No newline at end of file
+Index: src/main/java/com/ahmete/MatematikIslemleri.java
+===================================================================
+diff --git a/src/main/java/com/ahmete/MatematikIslemleri.java b/src/main/java/com/ahmete/MatematikIslemleri.java
+deleted file mode 100644
+--- a/src/main/java/com/ahmete/MatematikIslemleri.java	(revision 4f7da76f7558e55a8a63fe4f394198d32b2a4d06)
++++ /dev/null	(revision 4f7da76f7558e55a8a63fe4f394198d32b2a4d06)
+@@ -1,55 +0,0 @@
+-package com.ahmete;
+-
+-import java.util.Scanner;
+-
+-class WrongChoiceException extends Exception {
+-	public WrongChoiceException(String message) {
+-		super(message);
+-	}
+-}
+-
+-public class MatematikIslemleri {
+-	public static void main(String[] args) {
+-		Scanner scanner = new Scanner(System.in);
+-		int sayi1 = 10;
+-		int sayi2 = 20;
+-		
+-		System.out.println("Matematik İşlemleri");
+-		System.out.println("1 - Çarpma");
+-		System.out.println("2 - Bölme");
+-		System.out.println("3 - Toplama");
+-		System.out.println("4 - Çıkarma");
+-		System.out.println("0 - Çıkış");
+-		System.out.print("Bir işlem seçiniz: ");
+-		
+-		int secim = scanner.nextInt();
+-		
+-		try {
+-			if (secim < 0 || secim > 4) {
+-				throw new WrongChoiceException("Hatalı seçim! Lütfen 0 ile 4 arasında bir değer giriniz.");
+-			}
+-			
+-			switch (secim) {
+-				case 1:
+-					System.out.println("Çarpma: " + (sayi1 * sayi2));
+-					break;
+-				case 2:
+-					System.out.println("Bölme: " + (sayi1 / sayi2));
+-					break;
+-				case 3:
+-					System.out.println("Toplama: " + (sayi1 + sayi2));
+-					break;
+-				case 4:
+-					System.out.println("Çıkarma: " + (sayi1 - sayi2));
+-					break;
+-				case 0:
+-					System.out.println("Çıkış yapılıyor...");
+-					break;
+-			}
+-		} catch (WrongChoiceException e) {
+-			System.out.println(e.getMessage());
+-		}
+-		
+-		scanner.close();
+-	}
+-}
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/UserRepository.java
+===================================================================
+diff --git a/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/UserRepository.java b/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/UserRepository.java
+deleted file mode 100644
+--- a/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/UserRepository.java	(revision 4f7da76f7558e55a8a63fe4f394198d32b2a4d06)
++++ /dev/null	(revision 4f7da76f7558e55a8a63fe4f394198d32b2a4d06)
+@@ -1,32 +0,0 @@
+-package com.ahmete._00_ExceptionGiris._03_UserSearch;
+-
+-import java.util.ArrayList;
+-import java.util.List;
+-import java.util.Optional;
+-
+-public class UserRepository {
+-	List<User> users;
+-	
+-	public UserRepository() {
+-		this.users = new ArrayList<>();
+-		users.add(new User("Ayhan"));
+-		users.add(new User("Berk"));
+-		users.add(new User("Bahar"));
+-		users.add(new User("Su"));
+-		users.add(new User("Can"));
+-		users.add(new User("Emel"));
+-	}
+-	
+-	/**
+-	 * bu metod dışarıdan gönderilen isimde bir kullanıcı bulursa o kullanıcı geri dönecek
+-	 * eğer bulamazsa null dönmeyelim kendi exceptionımızı fırlatalım
+-	 */
+-	
+-	public User getUserByName(String name){
+-		Optional<User> optionalUser = users.stream()
+-		                            .filter(user -> user.getName().equalsIgnoreCase(name))
+-		                            .findFirst();
+-		
+-		return optionalUser.orElseThrow();
+-	}
+-}
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/User.java
+===================================================================
+diff --git a/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/User.java b/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/User.java
+deleted file mode 100644
+--- a/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/User.java	(revision 4f7da76f7558e55a8a63fe4f394198d32b2a4d06)
++++ /dev/null	(revision 4f7da76f7558e55a8a63fe4f394198d32b2a4d06)
+@@ -1,26 +0,0 @@
+-package com.ahmete._00_ExceptionGiris._03_UserSearch;
+-
+-import java.util.Random;
+-
+-public class User {
+-	private long id;
+-	private String name;
+-	
+-	public User(String name) {
+-		this.id=new Random().nextLong();
+-		this.name = name;
+-	}
+-	
+-	public long getId() {
+-		return id;
+-	}
+-	
+-	public String getName() {
+-		return name;
+-	}
+-	
+-	@Override
+-	public String toString() {
+-		return "User{" + "id=" + getId() + ", name='" + getName() + '\'' + '}';
+-	}
+-}
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_03_UserSearch/Error.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ahmete/_03_UserSearch/Error.md b/src/main/java/com/ahmete/_03_UserSearch/Error.md
+new file mode 100644
+--- /dev/null	(date 1723616718149)
++++ b/src/main/java/com/ahmete/_03_UserSearch/Error.md	(date 1723616718149)
+@@ -0,0 +1,10 @@
++mark down 
++# UYGULAMA İÇİ HATA YÖNETİMİ
++
++## Hata türleri ve numaralandırma 
++
++...
++
++
++
++...
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_03_UserSearch/ErrorType.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ahmete/_03_UserSearch/ErrorType.java b/src/main/java/com/ahmete/_03_UserSearch/ErrorType.java
+new file mode 100644
+--- /dev/null	(date 1723616718145)
++++ b/src/main/java/com/ahmete/_03_UserSearch/ErrorType.java	(date 1723616718145)
+@@ -0,0 +1,22 @@
++package com.ahmete._03_UserSearch;
++
++public enum ErrorType {
++	REPOSITORY_USER_NOTFOUND(1001,"aradıgınız kullanıcı bulunamadı."),
++	REPOSITORY_USER_SAVE_ERROR(1002,"aradıgınız kullanıcı kayıt edilemedi");
++	
++	private int code;
++	private String message;
++	
++	ErrorType(int code, String message) {
++		this.code = code;
++		this.message = message;
++	}
++	
++	public int getCode() {
++		return code;
++	}
++	
++	public String getMessage() {
++		return message;
++	}
++}
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_03_UserSearch/UserNotFoundException.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ahmete/_03_UserSearch/UserNotFoundException.java b/src/main/java/com/ahmete/_03_UserSearch/UserNotFoundException.java
+new file mode 100644
+--- /dev/null	(date 1723616718159)
++++ b/src/main/java/com/ahmete/_03_UserSearch/UserNotFoundException.java	(date 1723616718159)
+@@ -0,0 +1,19 @@
++package com.ahmete._03_UserSearch;
++
++public class UserNotFoundException  extends Exception{
++	private final ErrorType errorType;
++	
++	public UserNotFoundException(ErrorType errorType) {
++		super(errorType.getMessage());
++		this.errorType=errorType;
++	}
++	
++	public UserNotFoundException(ErrorType errorType,String message) {
++		super(message);
++		this.errorType=errorType;
++	}
++	
++	public ErrorType getErrorType() {
++		return errorType;
++	}
++}
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_03_UserSearch/UserRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ahmete/_03_UserSearch/UserRepository.java b/src/main/java/com/ahmete/_03_UserSearch/UserRepository.java
+new file mode 100644
+--- /dev/null	(date 1723617510520)
++++ b/src/main/java/com/ahmete/_03_UserSearch/UserRepository.java	(date 1723617510520)
+@@ -0,0 +1,43 @@
++package com.ahmete._03_UserSearch;
++
++import java.util.ArrayList;
++import java.util.List;
++import java.util.Optional;
++
++public class UserRepository {
++	List<User> users;
++	
++	public UserRepository() {
++		this.users = new ArrayList<>();
++		users.add(new User("Ayhan"));
++		users.add(new User("Berk"));
++		users.add(new User("Bahar"));
++		users.add(new User("Su"));
++		users.add(new User("Can"));
++		users.add(new User("Emel"));
++	}
++	
++	/**
++	 * Bu metod dışarıdan gönderilen isimde bir kullanıcı bulursa o kullanıcıyı geri dönecek.
++	 * Eğer bulamazsa null dönmeyelim. Kendi exceptionımızı fırlatalım.
++	 * @param name
++	 * @return
++	 */
++	public User getUserByName(String name) throws UserNotFoundException {
++		Optional<User> optionalUser = users.stream()
++		                                   .filter(user -> user.getName().equalsIgnoreCase(name))
++		                                   .findFirst();
++		
++		return optionalUser.orElseThrow(()->new UserNotFoundException(ErrorType.REPOSITORY_USER_NOTFOUND));
++		//return optionalUser.orElseThrow(UserNotFoundException::new);
++	}
++	
++	public List<User> getUserListByName(String name) throws UserNotFoundException {
++		List<User> list = users.stream().filter(user -> user.getName().toLowerCase().contains(name)).toList();
++		if (list.isEmpty()){
++			throw new UserNotFoundException(ErrorType.REPOSITORY_USER_NOTFOUND,"Aradıgınız kriterlerde bir kullanıcı " +
++					"bulunamöadı");
++		}
++		return list;
++	}
++}
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_03_UserSearch/Runner.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ahmete/_03_UserSearch/Runner.java b/src/main/java/com/ahmete/_03_UserSearch/Runner.java
+new file mode 100644
+--- /dev/null	(date 1723617914475)
++++ b/src/main/java/com/ahmete/_03_UserSearch/Runner.java	(date 1723617914475)
+@@ -0,0 +1,26 @@
++package com.ahmete._03_UserSearch;
++
++public class Runner {
++	public static void main(String[] args) {
++		UserRepository repository=new UserRepository();
++		User su = null;
++		
++		try {
++			su = repository.getUserByName("Erkan");
++		}
++		catch (UserNotFoundException e) {
++			System.out.println(e.getErrorType().getCode()+" "+e.getMessage());
++			
++		}
++		
++		System.out.println(su);
++		
++		try {
++			repository.getUserListByName("a").forEach(System.out::println);
++		}
++		catch (UserNotFoundException e) {
++			System.err.println(e.getErrorType().getCode()+" "+e.getMessage());
++			
++		}
++	}
++}
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_00_ExceptionGiris/Personel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ahmete/_00_ExceptionGiris/Personel.java b/src/main/java/com/ahmete/_00_ExceptionGiris/Personel.java
+new file mode 100644
+--- /dev/null	(date 1723588643075)
++++ b/src/main/java/com/ahmete/_00_ExceptionGiris/Personel.java	(date 1723588643075)
+@@ -0,0 +1,25 @@
++package com.ahmete._00_ExceptionGiris;
++
++public class Personel {
++	private String name;
++	private String surname;
++	
++	
++	public String getName() {
++		return name;
++	}
++	
++	public String getSurname() {
++		return surname;
++	}
++	
++	public Personel(String name, String surname) {
++		this.name = name;
++		this.surname = surname;
++	}
++	
++	@Override
++	public String toString() {
++		return "Personel{" + "name='" + getName() + '\'' + ", surname='" + getSurname() + '\'' + '}';
++	}
++}
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_00_ExceptionGiris/_02_ExceptionTurleri.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ahmete/_00_ExceptionGiris/_02_ExceptionTurleri.java b/src/main/java/com/ahmete/_00_ExceptionGiris/_02_ExceptionTurleri.java
+new file mode 100644
+--- /dev/null	(date 1723588625131)
++++ b/src/main/java/com/ahmete/_00_ExceptionGiris/_02_ExceptionTurleri.java	(date 1723588625131)
+@@ -0,0 +1,96 @@
++package com.ahmete._00_ExceptionGiris;
++
++import java.io.FileInputStream;
++import java.io.FileNotFoundException;
++import java.io.IOException;
++
++/**
++ * Exception;
++ * - Sizin tanımladığınız exceptionlar (User-Defined Exception)
++ * - Hazır gelen exceptionlar (Built-in Exceptions)
++ *      -Checked (ClassNotFoundException, InterruptedException, IOException, FileNotFoundException)
++ *          Derleme zamanında mutlaka kontrol sağlanmasını zorunlu kılar.
++ *          Bu kontrol için 2 yol vardır.
++ *              1. YOL: Try-Catch bloğuna alarak.
++ *              2. YOL: İçinde bulunduğumuz metodun imzasına throws ile exception adını yazarak.
++ *      -Unchecked (ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException) : RuntimeException'dan türetilen sınıflar.
++ */
++
++public class _02_ExceptionTurleri {
++	public static void main(String[] args)  {
++		try {
++			dosyaOku();
++			beklet();
++		}
++		// catch bloklarından sadece 1si çalışır.
++		catch (FileNotFoundException e) {
++			//System.out.print("e.printStackTrace()........:");
++			//e.printStackTrace();
++			System.out.println("e.getMessage():............:"+e.getMessage());
++			//System.out.println("e.getLocalizedMessage()....:"+e.getLocalizedMessage());
++			//System.out.println("e.toString()...............:"+e.toString());
++			System.out.println("e:.........................:"+e);
++		}
++		catch (IOException e) {
++			System.out.println("IO Exception:............:"+e.getMessage());
++		}
++		catch (InterruptedException e) {
++			e.printStackTrace();
++		}
++		catch (Exception e){
++			System.out.println("Exception:............:"+e.getMessage());
++		}
++		System.out.println("program devam ediyor. 1");
++		
++		// ORNEK 2:
++		
++		Personel p1=new Personel("Sami","Sarı");
++		System.out.println(p1.getName());
++		
++		Personel p2=null;
++		try {
++			System.out.println(p2.getName());
++		}
++		//catch sıralaması önemlidir. Özelden genele doğru gidilmelidir.
++		catch (NullPointerException e){ //Exception 'java.lang.NullPointerException' has already been caught
++			System.out.println("e NullPointerException:.........................:"+e);
++		}
++		catch (Exception e) {
++			//e.printStackTrace();
++			System.out.println("e Exception:.........................:"+e);
++		}
++		System.out.println("program devam ediyor. 2");
++		
++		// ÖRNEK 3
++		
++		int[] sayiDizisi= {3, 5};
++		System.out.println(sayiDizisi[1]);
++		try {
++			System.out.println(5/2); // hata oluşan yer!
++			System.out.println(sayiDizisi[0]);
++		}
++		catch (ArrayIndexOutOfBoundsException e) {
++			e.printStackTrace();
++		}
++		catch (Exception e){
++			e.printStackTrace();
++		}
++		finally {
++			System.out.println("finally bloğuna düştük....");
++		}
++		System.out.println("program devam ediyor. 3");
++	}
++	
++	private static void beklet() throws InterruptedException {
++		Thread.sleep(2000);
++	}
++	
++	private static void dosyaOku() throws FileNotFoundException {
++		FileInputStream fis = null;
++		fis=new FileInputStream("C:/javaFiles/Hello4.txt");
++	}
++	
++	
++	
++	
++}
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_00_ExceptionGiris/_03_FinallyOrnek.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ahmete/_00_ExceptionGiris/_03_FinallyOrnek.java b/src/main/java/com/ahmete/_00_ExceptionGiris/_03_FinallyOrnek.java
+new file mode 100644
+--- /dev/null	(date 1723588693250)
++++ b/src/main/java/com/ahmete/_00_ExceptionGiris/_03_FinallyOrnek.java	(date 1723588693250)
+@@ -0,0 +1,48 @@
++package com.ahmete._00_ExceptionGiris;
++
++import java.io.FileInputStream;
++import java.io.FileNotFoundException;
++import java.io.IOException;
++
++public class _03_FinallyOrnek  {
++	public static void main(String[] args) {
++		FileInputStream fileData = null;
++		try {
++			fileData=new FileInputStream("C:/javaFiles/Hello4.txt");
++			int readedData;
++			System.out.println("Dosya içeriği:");
++			while( (readedData = fileData.read())!=-1 ) { // burada bir hata meydana geldiğinde FileInputStream açılmış olacak .
++				System.out.print((char)readedData);
++			}
++			//fileData.close(); // ama bu satır çalışmayacağı için FileInputStream kapatılmamış olacak. (memory leak)
++		}
++		catch (FileNotFoundException e) {
++			e.printStackTrace();
++		}
++		catch (IOException e) {
++			e.printStackTrace();
++		}
++		finally {
++			try {
++				fileData.close();
++			}
++			catch (IOException e) {
++				e.printStackTrace();
++			}
++			catch (NullPointerException e) {
++				System.out.println("fileData is null... ");
++			}
++			catch (Exception e) {
++				e.printStackTrace();
++			}
++		}
++		
++		/*try {
++			fileData.close(); // eğer FileInputStream açılamazsa, o zaman kapatamazsınız ve NullPointerException hatası alırsınız.
++		}
++		catch (IOException e) {
++			e.printStackTrace();
++		}*/
++		System.out.println("Program çalışmaya devam ediyor.");
++	}
++}
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_00_ExceptionGiris/_04_ExceptionOrnekler.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ahmete/_00_ExceptionGiris/_04_ExceptionOrnekler.java b/src/main/java/com/ahmete/_00_ExceptionGiris/_04_ExceptionOrnekler.java
+new file mode 100644
+--- /dev/null	(date 1723588715210)
++++ b/src/main/java/com/ahmete/_00_ExceptionGiris/_04_ExceptionOrnekler.java	(date 1723588715210)
+@@ -0,0 +1,17 @@
++package com.ahmete._00_ExceptionGiris;
++
++public class _04_ExceptionOrnekler {
++	public static void main(String[] args) {
++		String boy="170 ";
++		//String -> int çevirme:
++		int boyInteger = 0;
++		try {
++			boyInteger = Integer.parseInt(boy);
++		}
++		catch (NumberFormatException e) {
++			//e.printStackTrace();
++			System.out.println("Geçersiz format");
++		}
++		System.out.println(boyInteger);
++	}
++}
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_01_UserDefinedException/NotOutOfBoundsException.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ahmete/_01_UserDefinedException/NotOutOfBoundsException.java b/src/main/java/com/ahmete/_01_UserDefinedException/NotOutOfBoundsException.java
+new file mode 100644
+--- /dev/null	(date 1723588818525)
++++ b/src/main/java/com/ahmete/_01_UserDefinedException/NotOutOfBoundsException.java	(date 1723588818525)
+@@ -0,0 +1,13 @@
++package com.ahmete._01_UserDefinedException;
++// : checked Exception yapmak isterseniz Exception sınıfından extend edebilirsiniz.
++// : Eğer unchecked olmasını istersem RuntimeException sınıfından extend edebiliriz.
++public class NotOutOfBoundsException extends Exception {
++	public NotOutOfBoundsException() {
++		super();
++	}
++	
++	public NotOutOfBoundsException(String message) {
++		super(message);
++	}
++	
++}
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_01_UserDefinedException/Notlar.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ahmete/_01_UserDefinedException/Notlar.java b/src/main/java/com/ahmete/_01_UserDefinedException/Notlar.java
+new file mode 100644
+--- /dev/null	(date 1723588833879)
++++ b/src/main/java/com/ahmete/_01_UserDefinedException/Notlar.java	(date 1723588833879)
+@@ -0,0 +1,23 @@
++package com.ahmete._01_UserDefinedException;
++
++public class Notlar {
++	public static void main(String[] args) {
++		try {
++			notKontrol(120);
++		}
++		catch (NotOutOfBoundsException e) {
++			//e.printStackTrace();
++			System.out.println(e);
++			System.out.println(e.getMessage());
++		}
++		System.out.println("Program çalışmaya devam ediyor.");
++	}
++	private static void notKontrol(int not) throws NotOutOfBoundsException {
++		if (not < 0 || not > 100) {
++			//kendimiz hata fırlatabiliriz:
++			throw new NotOutOfBoundsException("not 0-100 arasında değil.");
++		}else {
++			System.out.println("Not sorunsuz.");
++		}
++	}
++}
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"6408c5eb-259a-4529-8e95-2c4f87839e0a\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/.gitignore\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/encodings.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/gradle.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build.gradle\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/gradlew\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/gradlew.bat\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/settings.gradle\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ahmete/MatematikIslemleri.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/Main.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_01_CheckedOrnek.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_02_ExceotionTurleri.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/User.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/UserRepository.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/UserRunner.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ExternalProjectsData\">\r\n    <projectState path=\"$PROJECT_DIR$\">\r\n      <ProjectState />\r\n    </projectState>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 6\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2kYEua1UzbthY6flvuttTjeQ3wz\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"flattenModules\" value=\"true\" />\r\n    <option name=\"showExcludedFiles\" value=\"false\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n    <option name=\"showScratchesAndConsoles\" value=\"false\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"Application.MatematikIslemleri.executor\": \"Run\",\r\n    \"Application.UserRunner.executor\": \"Run\",\r\n    \"Application._02_ExceotionTurleri.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/intellij/04_Exception/Exceptions\",\r\n    \"settings.editor.selected.configurable\": \"reference.settingsdialog.project.gradle\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"Application.UserRunner\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.ahmete._00_ExceptionGiris.Main\" />\r\n      <module name=\"Exceptions.main\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.ahmete._00_ExceptionGiris.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"MatematikIslemleri\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.ahmete.MatematikIslemleri\" />\r\n      <module name=\"Exceptions.main\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.ahmete.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"UserRunner\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.ahmete._00_ExceptionGiris._03_UserSearch.UserRunner\" />\r\n      <module name=\"Exceptions.main\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.ahmete._00_ExceptionGiris._03_UserSearch.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"_02_ExceotionTurleri\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.ahmete._00_ExceptionGiris._02_ExceotionTurleri\" />\r\n      <module name=\"Exceptions.main\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.ahmete._00_ExceptionGiris.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.UserRunner\" />\r\n        <item itemvalue=\"Application.MatematikIslemleri\" />\r\n        <item itemvalue=\"Application._02_ExceotionTurleri\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"6408c5eb-259a-4529-8e95-2c4f87839e0a\" name=\"Changes\" comment=\"\" />\r\n      <created>1723452333526</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1723452333526</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 4f7da76f7558e55a8a63fe4f394198d32b2a4d06)
++++ b/.idea/workspace.xml	(date 1723616718352)
+@@ -4,26 +4,27 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="6408c5eb-259a-4529-8e95-2c4f87839e0a" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/MatematikIslemleri.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/Main.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_01_CheckedOrnek.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_02_ExceotionTurleri.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/User.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/UserRepository.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/UserRunner.java" afterDir="false" />
++    <list default="true" id="6408c5eb-259a-4529-8e95-2c4f87839e0a" name="Changes" comment="first commit">
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/Personel.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_02_ExceptionTurleri.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_03_FinallyOrnek.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_04_ExceptionOrnekler.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_01_UserDefinedException/NotOutOfBoundsException.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_01_UserDefinedException/Notlar.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_02_UserDefinedException2/MatematikIslemler.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_02_UserDefinedException2/WrongChoiceException.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_03_UserSearch/Error.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_03_UserSearch/ErrorType.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_03_UserSearch/Runner.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_03_UserSearch/User.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_03_UserSearch/UserNotFoundException.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_03_UserSearch/UserRepository.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/ahmete/MatematikIslemleri.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_02_ExceotionTurleri.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/User.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/UserRepository.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/UserRunner.java" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -34,17 +35,47 @@
+     <projectState path="$PROJECT_DIR$">
+       <ProjectState />
+     </projectState>
++  </component>
++  <component name="ExternalProjectsManager">
++    <system id="GRADLE">
++      <state>
++        <projects_view>
++          <tree_state>
++            <expand>
++              <path>
++                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
++                <item name="Exceptions" type="f1a62948:ProjectNode" />
++              </path>
++            </expand>
++            <select />
++          </tree_state>
++        </projects_view>
++      </state>
++    </system>
+   </component>
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
+         <option value="Class" />
++        <option value="Enum" />
+       </list>
+     </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
++  <component name="GitHubPullRequestSearchHistory">{
++  &quot;lastFilter&quot;: {
++    &quot;state&quot;: &quot;OPEN&quot;,
++    &quot;assignee&quot;: &quot;AhmetEris-dev&quot;
++  }
++}</component>
++  <component name="GithubPullRequestsUISettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;url&quot;: &quot;https://github.com/AhmetEris-dev/Exceptions.git&quot;,
++    &quot;accountId&quot;: &quot;b63e95f3-2ff7-4529-9e85-2e95b635393f&quot;
++  }
++}</component>
+   <component name="ProjectColorInfo">{
+   &quot;associatedIndex&quot;: 6
+ }</component>
+@@ -62,6 +93,7 @@
+   "keyToString": {
+     "Application.Main.executor": "Run",
+     "Application.MatematikIslemleri.executor": "Run",
++    "Application.Runner.executor": "Run",
+     "Application.UserRunner.executor": "Run",
+     "Application._02_ExceotionTurleri.executor": "Run",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+@@ -72,7 +104,7 @@
+     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+   }
+ }]]></component>
+-  <component name="RunManager" selected="Application.UserRunner">
++  <component name="RunManager" selected="Application.Runner">
+     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="com.ahmete._00_ExceptionGiris.Main" />
+       <module name="Exceptions.main" />
+@@ -99,6 +131,19 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
++    <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.ahmete._03_UserSearch.Runner" />
++      <module name="Exceptions.main" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.ahmete._03_UserSearch.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <configuration name="UserRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="com.ahmete._00_ExceptionGiris._03_UserSearch.UserRunner" />
+       <module name="Exceptions.main" />
+@@ -127,6 +172,7 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.Runner" />
+         <item itemvalue="Application.UserRunner" />
+         <item itemvalue="Application.MatematikIslemleri" />
+         <item itemvalue="Application._02_ExceotionTurleri" />
+@@ -143,6 +189,19 @@
+       <option name="presentableId" value="Default" />
+       <updated>1723452333526</updated>
+     </task>
++    <task id="LOCAL-00001" summary="first commit">
++      <option name="closed" value="true" />
++      <created>1723547489283</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1723547489283</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="first commit" />
++    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_02_UserDefinedException2/MatematikIslemler.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ahmete/_02_UserDefinedException2/MatematikIslemler.java b/src/main/java/com/ahmete/_02_UserDefinedException2/MatematikIslemler.java
+new file mode 100644
+--- /dev/null	(date 1723588870685)
++++ b/src/main/java/com/ahmete/_02_UserDefinedException2/MatematikIslemler.java	(date 1723588870685)
+@@ -0,0 +1,70 @@
++package com.ahmete._02_UserDefinedException2;
++
++import java.util.Scanner;
++
++public class MatematikIslemler {
++	public static void main(String[] args) {
++		Scanner sc=new Scanner(System.in);
++		int sayi1=10;
++		int sayi2=20;
++		while (true) {
++			System.out.println("Matematik İşlemleri");
++			System.out.println("1-Çarpma");
++			System.out.println("2-Bölme");
++			System.out.println("3-Toplama");
++			System.out.println("4-Çıkarma");
++			System.out.println("0-Çıkış");
++			// kullanıcı yanlış seçim yaptığında (0-4 arasında değilse) bir hata fırlatın.
++			// hata türü kendi yazdığınız bir hata olabilir.
++			// WrongChoiceException
++			
++			int userInput;
++			switch (userInput=sc.nextInt()) {
++				case 1:
++					carpma(sayi1,sayi2);
++					break;
++				case 2:
++					bolme(sayi1,sayi2);
++					break;
++				case 3:
++					toplama(sayi1,sayi2);
++					break;
++				case 4:
++					cikarma(sayi1,sayi2);
++					break;
++				case 0:
++					System.out.println("Program kapatılıyor....");
++					return;
++				default:
++					try {
++						userInputKontrol();
++					}
++					catch (WrongChoiceException e) {
++						e.printStackTrace();
++					}
++			}
++		}
++	}
++	
++	private static void userInputKontrol() throws WrongChoiceException {
++		
++		throw new WrongChoiceException("0-4 arası değer girilmeli.");
++		
++	}
++	
++	private static void cikarma(int sayi1, int sayi2) {
++		System.out.println(sayi1-sayi2);
++	}
++	
++	private static void toplama(int sayi1, int sayi2) {
++		System.out.println(sayi1+sayi2);
++	}
++	
++	private static void bolme(int sayi1, int sayi2) {
++		System.out.println(sayi1/(double)sayi2);
++	}
++	
++	private static void carpma(int sayi1,int sayi2) {
++		System.out.println(sayi1*sayi2);
++	}
++}
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_02_UserDefinedException2/WrongChoiceException.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ahmete/_02_UserDefinedException2/WrongChoiceException.java b/src/main/java/com/ahmete/_02_UserDefinedException2/WrongChoiceException.java
+new file mode 100644
+--- /dev/null	(date 1723588901199)
++++ b/src/main/java/com/ahmete/_02_UserDefinedException2/WrongChoiceException.java	(date 1723588901199)
+@@ -0,0 +1,10 @@
++package com.ahmete._02_UserDefinedException2;
++
++public class WrongChoiceException extends Exception{
++	public WrongChoiceException() {
++	}
++	
++	public WrongChoiceException(String message) {
++		super(message);
++	}
++}
+\ No newline at end of file
+Index: src/main/java/com/ahmete/_03_UserSearch/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ahmete/_03_UserSearch/User.java b/src/main/java/com/ahmete/_03_UserSearch/User.java
+new file mode 100644
+--- /dev/null	(date 1723588979915)
++++ b/src/main/java/com/ahmete/_03_UserSearch/User.java	(date 1723588979915)
+@@ -0,0 +1,26 @@
++package com.ahmete._03_UserSearch;
++
++import java.util.Random;
++
++public class User {
++	private Long id;
++	private String name;
++	
++	public User(String name) {
++		this.id=new Random().nextLong();
++		this.name = name;
++	}
++	
++	public Long getId() {
++		return id;
++	}
++	
++	public String getName() {
++		return name;
++	}
++	
++	@Override
++	public String toString() {
++		return "User{" + "id=" + getId() + ", name='" + getName() + '\'' + '}';
++	}
++}
+\ No newline at end of file

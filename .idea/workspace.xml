@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6408c5eb-259a-4529-8e95-2c4f87839e0a" name="Changes" comment="" />
+    <list default="true" id="6408c5eb-259a-4529-8e95-2c4f87839e0a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/Personel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_02_ExceptionTurleri.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_03_FinallyOrnek.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_04_ExceptionOrnekler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_01_UserDefinedException/NotOutOfBoundsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_01_UserDefinedException/Notlar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_02_UserDefinedException2/MatematikIslemler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ahmete/_02_UserDefinedException2/WrongChoiceException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_02_ExceotionTurleri.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ahmete/_00_ExceptionGiris/_03_UserSearch/UserRunner.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +27,23 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Exceptions" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
